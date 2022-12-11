@@ -43,6 +43,7 @@ module.exports = {
          */
         // '../../**/*.py'
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             'dark-main': '#18191A',
@@ -52,6 +53,14 @@ module.exports = {
             sky: colors.sky,
             teal: colors.teal,
             rose: colors.rose,
+        },
+    },
+    variants: {
+        extend: {
+            display: ['group-hover'],
+            transform: ['group-hover'],
+            scale: ['group-hover'],
+            textOpacity: ['dark'],
         },
     },
     plugins: [
@@ -64,5 +73,6 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
+        require('tailwind-scrollbar-hide'),
     ],
 }

@@ -1,16 +1,21 @@
-{% load tailwind_tags %}
 {% load static %}
+{% load tailwind_tags %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" >
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% tailwind_css %}
-    <title>Document</title>
-</head>
-<body>
 
+    {% tailwind_css %}
+
+    {% block extra_head %}{% endblock extra_head %}
+    
+    <title>{% block title %}{% endblock title %}</title>
+
+</head>
+<body class="bg-gray-100 dark:bg-dark-main">
+    
     
     {% block navbar %} {% endblock navbar %}
         
