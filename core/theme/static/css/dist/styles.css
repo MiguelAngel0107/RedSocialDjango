@@ -765,6 +765,10 @@ select {
   right: 0px;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -1065,6 +1069,14 @@ select {
   padding-left: 2.5rem;
 }
 
+.pt-16 {
+  padding-top: 4rem;
+}
+
+.pt-32 {
+  padding-top: 8rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1333,11 +1345,23 @@ select {
     width: -moz-max-content;
     width: max-content;
   }
+
+  .lg\:w-2\/3 {
+    width: 66.666667%;
+  }
+
+  .lg\:pt-16 {
+    padding-top: 4rem;
+  }
 }
 
 @media (min-width: 1280px) {
   .xl\:mr-2 {
     margin-right: 0.5rem;
+  }
+
+  .xl\:block {
+    display: block;
   }
 
   .xl\:inline-block {
@@ -1359,6 +1383,10 @@ select {
   .xl\:w-max {
     width: -moz-max-content;
     width: max-content;
+  }
+
+  .xl\:w-2\/5 {
+    width: 40%;
   }
 
   .xl\:px-12 {
