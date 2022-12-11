@@ -5,6 +5,8 @@
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
 
+const colors = require('tailwindcss/colors')
+
 module.exports = {
     content: [
         /**
@@ -42,7 +44,15 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            'dark-main': '#18191A',
+            'dark-second': '#242526',
+            'dark-third': '#3A3B3C',
+            'dark-txt': '#B8BBBF',
+            sky: colors.sky,
+            teal: colors.teal,
+            rose: colors.rose,
+        },
     },
     plugins: [
         /**
