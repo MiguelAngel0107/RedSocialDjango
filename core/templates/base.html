@@ -1,7 +1,7 @@
 {% load static %}
 {% load tailwind_tags %}
 <!DOCTYPE html>
-<html lang="es" >
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +9,21 @@
 
     {% tailwind_css %}
 
+    <!-- AlphaJs -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- BoxIcons -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <!--JQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
     {% block extra_head %}{% endblock extra_head %}
     
     <title>{% block title %}{% endblock title %}</title>
 
 </head>
-<body class="bg-gray-100 dark:bg-dark-main">
+<body class="bg-gray-100 dark:bg-dark-main flex justify-center">
     
     
     {% block navbar %} {% endblock navbar %}
