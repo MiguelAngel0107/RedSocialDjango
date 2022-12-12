@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "social",
     "tailwind",
     "theme",
+    "accounts",
     
     "django.contrib.sites",
     "django.contrib.humanize",
