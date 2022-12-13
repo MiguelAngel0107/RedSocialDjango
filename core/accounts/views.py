@@ -18,3 +18,11 @@ class UserProfileView(View):
 
         }
         return render(request, 'users/detail.html', context)
+
+
+class UserProfileEdit(View):
+
+    def get(self, request):
+
+
+        return render(request, '<h1>Hola</h1>')
