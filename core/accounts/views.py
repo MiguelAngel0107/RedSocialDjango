@@ -22,7 +22,15 @@ class UserProfileView(View):
 
 class UserProfileEdit(View):
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
+        
+        context={
+
+        }
+        return render(request, 'test.html', context)
 
 
-        return render(request, '<h1>Hola</h1>')
+
+
+def test(request):
+    return render(request, 'test.html')
