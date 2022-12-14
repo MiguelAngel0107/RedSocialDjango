@@ -5,8 +5,8 @@
     {% if not user.is_authenticated %}
     <li>
         <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
-            <img src="{{user.profile.picture.url}}" alt="Profile picture" class="w-10 h-10 rounded-full">
-            <span class="font-semibold">{{user.username}}</span>
+            <img src="{% static 'default/user_default_profile.png' %}" alt="Profile picture" class="w-10 h-10 rounded-full">
+            <span class="font-semibold">User</span>
         </a>
     </li>
     {% else %}
