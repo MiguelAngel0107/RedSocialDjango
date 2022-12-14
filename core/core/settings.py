@@ -38,20 +38,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
-    "social",
     "tailwind",
     "theme",
-    "accounts",
-    
     "django.contrib.sites",
     "django.contrib.humanize",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
     'crispy_forms',
     'crispy_tailwind',
+    "accounts",
+    "social",
 ]
 
 TAILWIND_APP_NAME = 'theme'
