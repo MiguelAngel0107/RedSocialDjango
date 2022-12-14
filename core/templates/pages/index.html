@@ -4,7 +4,7 @@
 
     
 {% block navbar %}
-{% include 'components/navbar.html' %}
+    {% include 'components/navbar.html' %}
 {% endblock navbar %}
         
     
@@ -16,19 +16,20 @@
 
 
 {% block content %} 
-<p>test</p>
+    {% include 'components/index/story.html' %}
+    {% include 'components/index/post.html' %}
 {% endblock content %}
 
 
 
 {% block right_sidebar %} 
-{% include 'components/sidebars/right/sidebar.html' %}
+    {% include 'components/sidebars/right/sidebar.html' %}
 {% endblock right_sidebar %}
 
 
 
 {% block footer %} 
-{% include 'components/footer.html' %}
+    {% include 'components/footer.html' %}
 {% endblock footer %}
     
 
