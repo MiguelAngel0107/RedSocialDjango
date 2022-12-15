@@ -24,6 +24,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', HomeView.as_view(), name="home"),
     path('user/', include('accounts.urls', namespace='users')),
+    path("social/", include('social.urls', namespace='social'))
 
 ]
 
