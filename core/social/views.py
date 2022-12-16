@@ -45,7 +45,6 @@ class PostDetailView(LoginRequiredMixin, View):
 
         return render(request, 'pages/social/detail.html', context)
 
-
 class PostEditView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 
     model=SocialPost
@@ -61,6 +60,7 @@ class PostEditView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
         return self.request.user == post.author
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+
     model=SocialPost
     template_name='pages/social/delete.html'
     success_url = reverse_lazy('home')
@@ -68,3 +68,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
+

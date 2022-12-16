@@ -7,6 +7,7 @@ from social.forms import SocialPostForm
 
 
 class HomeView(LoginRequiredMixin, View):
+    
     def get(self, request, *args, **kwargs):
         logged_in_user=request.user
 
