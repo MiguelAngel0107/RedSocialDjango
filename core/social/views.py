@@ -3,23 +3,25 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls.base import reverse_lazy
 from django.views.generic import View
+from django.http import HttpResponseRedirect 
 
 
 from .models import SocialComment, SocialPost
+from .forms import SocialCommentForm
 
 # Create your views here.
 
 class PostDetailView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         post = SocialPost.objects.get(pk=pk)
-        #form = SocialCommentForm()
+        form = SocialCommentForm()
 
         #comments = SocialComment.objects.filter(post=post).order_by('-created_on')
 
         context = {
             'post': post,
-        #    'form': form,
-        #    'comments':comments
+            'form': form,
+            #'comments':comments
         }
 
         return render(request, 'pages/social/detail.html', context)
@@ -27,20 +29,20 @@ class PostDetailView(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         post = SocialPost.objects.get(pk=pk)
 
-        #form = SocialCommentForm(request.POST)
+        form = SocialCommentForm(request.POST)
 
-        #if form.is_valid():
-        #    new_comment = form.save(commit=False)
-        #    new_comment.author = request.user
-        #    new_comment.post = post
-        #    new_comment.save()
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.author = request.user
+            new_comment.post = post
+            new_comment.save()
 
         #comments = SocialComment.objects.filter(post=post).order_by('-created_on')
 
         context = {
             'post': post,
-            #'form': form,
-        #    'comments':comments
+            'form': form,
+            #'comments':comments
         }
 
         return render(request, 'pages/social/detail.html', context)
@@ -69,3 +71,61 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object()
         return self.request.user == post.author
 
+class AddLike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = SocialPost.objects.get(pk=pk)
+
+        is_dislike = False
+        
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+
+        if is_dislike:
+            post.dislikes.remove(request.user)
+
+        is_like = False
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if not is_like:
+            post.likes.add(request.user)
+
+        if is_like:
+            post.likes.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+
+class AddDislike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = SocialPost.objects.get(pk=pk)
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+
+        if is_like:
+            post.likes.remove(request.user)
+
+        is_dislike = False
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+
+        if not is_dislike:
+            post.dislikes.add(request.user)
+
+        if is_dislike:
+            post.dislikes.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
