@@ -30,18 +30,18 @@
       </div>
 
       <!--Profile Picture-->
-        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
-        <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-            Photo
-        </label>
-        <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <div class="flex items-center">
-            <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
-                <img src="{{user.profile.picture.url}}" alt="">
-            </span>
-            {{form.picture}}
+        <div class="mt-4 sm:grid sm:grid-cols-2 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
+            <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                Photo
+            </label>
+            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div class="flex items-center">
+                    <span class="mr-1 h-14 w-14 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
+                        <img src="{{user.profile.picture.url}}" alt="">
+                    </span>
+                    {{form.picture}}
+                </div>
             </div>
-        </div>
         </div>
 
         <div class="mt-4">

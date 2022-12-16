@@ -16,12 +16,12 @@ class PostDetailView(LoginRequiredMixin, View):
         post = SocialPost.objects.get(pk=pk)
         form = SocialCommentForm()
 
-        #comments = SocialComment.objects.filter(post=post).order_by('-created_on')
+        comments = SocialComment.objects.filter(post=post).order_by('-created_on')
 
         context = {
             'post': post,
             'form': form,
-            #'comments':comments
+            'comments':comments
         }
 
         return render(request, 'pages/social/detail.html', context)
@@ -37,12 +37,12 @@ class PostDetailView(LoginRequiredMixin, View):
             new_comment.post = post
             new_comment.save()
 
-        #comments = SocialComment.objects.filter(post=post).order_by('-created_on')
+        comments = SocialComment.objects.filter(post=post).order_by('-created_on')
 
         context = {
             'post': post,
             'form': form,
-            #'comments':comments
+            'comments':comments
         }
 
         return render(request, 'pages/social/detail.html', context)

@@ -26,6 +26,7 @@ class SocialComment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='social_comment_author')
     likes = models.ManyToManyField(User, blank=True, related_name='comment_likes')
     dislikes = models.ManyToManyField(User, blank=True, related_name='comment_dislikes')
+    post = models.ForeignKey('SocialPost', on_delete=models.CASCADE)
 
 
 class Image(models.Model):
