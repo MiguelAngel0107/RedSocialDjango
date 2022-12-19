@@ -259,7 +259,9 @@
         <div class="py-2 px-4 max-w-full">
             <!-- COMMENT -->
             {% for comment in comments %}
+            {% comment %}
             {% if comment.is_parent %}
+            {% endcomment %}
             <div class="flex space-x-2">
                 <a href="{% url 'users:profile' comment.author.username %}">
                 <img src="{{comment.author.profile.picture.url}}" alt="Profile picture" class="w-9 h-9 rounded-full">
@@ -276,12 +278,12 @@
 
                     <div x-data="{open:false}" class=" text-xs text-gray-500 dark:text-dark-txt">
                         {% if request.user == comment.author %}
-                            <a href="{% url 'social:comment-edit' post.pk comment.pk %}" class="font-semibold cursor-pointer">Edit</a>
+                            <a href="#" class="font-semibold cursor-pointer">Edit</a>
                             <span>.</span>
-                            <a href="{% url 'social:comment-delete' post.pk comment.pk %}" class="font-semibold cursor-pointer">Delete</a>
+                            <a href="#" class="font-semibold cursor-pointer">Delete</a>
                             
                         {% endif %}
-                        <form method="POST" action="{% url 'social:comment-like' post.pk comment.pk %}" class="pl-2 inline-flex">
+                        <form method="POST" action="#" class="pl-2 inline-flex">
                             {% csrf_token %}
                             <input type="hidden" name="next" value="{{request.path}}">
                             <button type="submit" class=" flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xs py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
@@ -290,7 +292,7 @@
                             </button> 
                         </form>
 
-                        <form method="POST" action="{% url 'social:comment-dislike' post.pk comment.pk %}" class=" inline-flex">
+                        <form method="POST" action="#" class=" inline-flex">
                             {% csrf_token %}
                             <input type="hidden" name="next" value="{{request.path}}">
                             <button type="submit" class=" flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xs py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
@@ -331,7 +333,7 @@
                                     {% comment %} <label class="block text-sm font-medium dark:text-dark-txt text-gray-700">
                                         Body
                                     </label> {% endcomment %}
-                                    <form method="POST" action="{% url 'social:comment-reply' post.pk comment.pk %}" class="inline-flex">
+                                    <form method="POST" action="#" class="inline-flex">
                                         {% csrf_token %}
                                         {{form.comment}}
                                         <div class="block">
@@ -405,7 +407,9 @@
 
                 </div>
             </div>
+            {% comment %}
             {% endif %}
+            {% endcomment %}
             {% endfor %}
             
             <!-- END COMMENT -->

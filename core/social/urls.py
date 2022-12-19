@@ -10,4 +10,6 @@ urlpatterns = [
 
     path("post/<int:pk>/like/", AddLike.as_view(), name='like'),
     path("post/<int:pk>/dislike", AddDislike.as_view(), name='dislike'),
+    
+
 ]

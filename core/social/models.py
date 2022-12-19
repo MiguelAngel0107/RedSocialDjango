@@ -28,6 +28,16 @@ class SocialComment(models.Model):
     dislikes = models.ManyToManyField(User, blank=True, related_name='comment_dislikes')
     post = models.ForeignKey('SocialPost', on_delete=models.CASCADE)
 
+    @property
+    def children(self):
+        return SocialComment.objects.filter(parent=self).order_by('-created_on').all()
+
+    @property
+    def is_parent(self):
+        if self.parent is None:
+            return True
+        return False
+
 
 class Image(models.Model):
     image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
